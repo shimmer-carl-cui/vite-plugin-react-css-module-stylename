@@ -11,13 +11,13 @@ Next, install our plugin package
 ##### NPM
 
 ```
-npm i install vite-plugin-react-css-module-styleName --save--dev
+npm i install vite-plugin-react-css-module-stylename --save--dev
 ```
 
 ##### Yarn
 
 ```
-yarn add vite-plugin-react-css-module-styleName -S
+yarn add vite-plugin-react-css-module-stylename -S
 ```
 
 Because we want to use styleName as a simplified attribute, you can configure the global variable styleName according to your needs

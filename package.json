@@ -1,7 +1,7 @@
 {
-  "name": "vite-plugin-react-css-module-styleName",
+  "name": "vite-plugin-react-css-module-stylename",
   "description": "Quick use of styleName to introduce CSS module plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "./www/index.ts",
   "exports": {
@@ -20,7 +20,7 @@
     "url": "git@github.com:shimmer-carl/vite-plugin-react-css-module-stylename.git"
   },
   "publishConfig": {
-    "registry": "https://www.npmjs.com/package/vite-plugin-react-css-module-stylename"
+    "access": "public"
   },
   "keywords": [
     "react-css-modules",

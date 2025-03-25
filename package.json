@@ -7,6 +7,8 @@
   "exports": {
     ".": "./www/index.js"
   },
+  "repository": "git@github.com:shimmer-carl/vite-plugin-react-css-module-stylename.git",
+  "homepage": "https://github.com/shimmer-carl/vite-plugin-react-css-module-stylename",
   "author": "carl_cui_private@163.com",
   "license": "MIT",
   "files": [
@@ -14,6 +16,9 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react-css-modules",
     "css-modules",

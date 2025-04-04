@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-react-css-module-stylename",
   "description": "Quick use of styleName to introduce CSS module plugin",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "type": "module",
   "main": "./www/index.ts",
   "exports": {
@@ -54,5 +54,8 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vite-plugin-dts": "^4.5.3"
+  },
+  "engines": {
+    "node": ">= 12.18.0"
   }
 }

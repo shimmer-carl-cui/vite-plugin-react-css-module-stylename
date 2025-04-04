@@ -12,7 +12,10 @@ export enum EEnv {
 }
 
 export interface IReactCssModule {
-  /** Need to set up public settings in Vite */
+  /** Need to set up public settings in Vite 
+      @param name css name
+      @param fileName file full url name
+  */
   generateScopedName: (name: string, fileName: string) => string;
   /** @Default scss setting */
   /** TODO: I will develop other module parsing in the future, such as less */

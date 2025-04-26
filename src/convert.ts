@@ -5,7 +5,7 @@ import * as types from "@babel/types";
 
 const STYLENAME_PREFIX = "Carl";
 
-export function transformCode(code) {
+export function transformCode(code, type) {
   const ast = parser.parse(code, {
     sourceType: "module",
     plugins: ["typescript", "jsx"],
@@ -16,7 +16,9 @@ export function transformCode(code) {
     // convert module.scss
     ImportDeclaration(path) {
       if (
-        path.node.source.value.endsWith(".module.scss") &&
+        path.node.source.value.endsWith(
+          type === "scss" ? ".module.scss" : ".module.less"
+        ) &&
         path.node.specifiers.length === 0
       ) {
         const styleName = `${STYLENAME_PREFIX}${styleCounter++}`;
@@ -65,6 +67,7 @@ export function transformCode(code) {
             types.stringLiteral("none")
           ),
         ]);
+
         const attributes: Array<any> = [
           combinedClassName
             ? types.jsxAttribute(
@@ -76,7 +79,7 @@ export function transformCode(code) {
             types.jsxIdentifier("style"),
             types.jsxExpressionContainer(styleObject)
           ),
-        ].filter((attr) => attr !== null && attr !== undefined); // 更明确地过滤掉无效属性
+        ].filter((attr) => attr !== null && attr !== undefined); // Optimize filter undefined/null values
 
         const newDiv = types.jsxElement(
           types.jsxOpeningElement(

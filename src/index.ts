@@ -11,6 +11,11 @@ export enum EEnv {
   Dev = "development",
 }
 
+export enum ECssType {
+  Scss = "scss",
+  Less = "less",
+}
+
 export interface IReactCssModule {
   /** Need to set up public settings in Vite 
       @param name css name
@@ -19,12 +24,12 @@ export interface IReactCssModule {
   generateScopedName: (name: string, fileName: string) => string;
   /** @Default scss setting */
   /** TODO: I will develop other module parsing in the future, such as less */
-  /** filetypes?: any; */
+  cssTypes?: ECssType;
   /** ENV */
   env: EEnv | string;
 }
 const reactCssModuleStyleName = (props: IReactCssModule): Plugin => {
-  const { generateScopedName: generate, env } = props;
+  const { generateScopedName: generate, env, cssTypes = ECssType.Scss } = props;
   return {
     name: NAME,
     enforce: "pre",
@@ -62,17 +67,27 @@ const reactCssModuleStyleName = (props: IReactCssModule): Plugin => {
               generateScopedName: (name: string, filename: string) => {
                 return generate(name, filename);
               },
-              filetypes: {
-                ".scss": {
-                  syntax: "postcss-scss",
-                },
-              },
+              filetypes:
+                cssTypes === ECssType.Scss
+                  ? {
+                      ".scss": {
+                        syntax: "postcss-scss",
+                      },
+                    }
+                  : {
+                      ".less": {
+                        syntax: "postcss-less",
+                      },
+                    },
             },
           ],
         ],
       });
       return {
-        code: env === EEnv.Pro ? transformCode(result.code) : result!.code!,
+        code:
+          env === EEnv.Pro
+            ? transformCode(result.code, cssTypes)
+            : result!.code!,
         map: result!.map,
       };
     },

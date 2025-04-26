@@ -2,7 +2,7 @@
 
 **After the creation of our React vite project is completed**
 
-**Please ensure that SASS is installed in your project**
+**Please ensure that Sass/Less is installed in your project**
 
 **Next, install our plugin package**
 
@@ -12,8 +12,19 @@
 
 ```
 npm install postcss-scss --dev
+Or
 yarn add postcss-scss --dev
 ```
+
+If you want to use less
+
+```
+npm install postcss-less --dev
+Or
+yarn add postcss-less --dev
+```
+
+Don't forgat use cssType in vite config
 
 ##### NPM
 
@@ -66,8 +77,19 @@ export default defineConfig(({ mode }) => ({
 
 ```
 import './index.module.scss';
+or
+import './index.module.less'
+
 <div styleName="demo">demo</div>
 ```
+
+#### API
+
+| Attribute          | Value                                           | Description                                         |
+| :----------------- | ----------------------------------------------- | --------------------------------------------------- |
+| env                | development/development                         | Judge current env,<br />handle corresponding logic |
+| cssTypes           | scss/less (default scss)                        | Analysis type                                       |
+| generateScopedName | (localName: string, filePath: string) => string | localName: css name,<br />filePath: scss file path  |
 
 #### FAQ
 
@@ -77,11 +99,11 @@ import './index.module.scss';
 Class extends value undefined is not a constructor or null
 ```
 
-Please try using,run again
+**Please try using,run again**
 
 ```
 "resolutions": {
   "postcss": "^8.4.38",
-  "postcss-scss": "^4.0.9"
+  "postcss-scss": "^4.0.9" or "postcss-scss": "^6.0.0"
 }
 ```

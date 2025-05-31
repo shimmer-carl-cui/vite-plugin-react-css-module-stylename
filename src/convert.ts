@@ -31,7 +31,7 @@ export function transformCode(code, type) {
         );
       }
     },
-    // add <div className={current scss file import}></div>
+    // add <strong className={current scss file import}></strong>
     ReturnStatement(path) {
       const returnArg = path.node.argument;
       if (types.isJSXElement(returnArg) || types.isJSXFragment(returnArg)) {
@@ -83,11 +83,11 @@ export function transformCode(code, type) {
 
         const newDiv = types.jsxElement(
           types.jsxOpeningElement(
-            types.jsxIdentifier("div"),
+            types.jsxIdentifier("strong"),
             attributes,
             false
           ),
-          types.jsxClosingElement(types.jsxIdentifier("div")),
+          types.jsxClosingElement(types.jsxIdentifier("strong")),
           []
         );
         if (types.isJSXElement(returnArg)) {
